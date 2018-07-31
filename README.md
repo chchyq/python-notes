@@ -239,3 +239,31 @@ stdout标准输出
 stderr标准错误
 
 2.网络数据获取
+
+·抓取
+    ·urlib内建模块
+        -urlib.request
+    ·Request第三方库
+    ·Scrapy框架
+·解析
+    BeautifulSoup库
+    re模块
+    
+（1）request库
+官网：http://www.python-requests.org/
+方法：request.get()//请求获取指定URL位置的资源，对应HTTP协议的GET方法
+
+抓取网站前要看是否有爬虫协议在网站后面加robots.txt 有的话表示他有爬虫协议 例https://www.douban.com/robots.txt
+
+>>> r = requests.get('https://api.github.com/user', auth=('user', 'pass'))
+>>> r.status_code//查看状态码
+200//正常
+>>> r.headers['content-type']
+'application/json; charset=utf8'
+>>> r.encoding
+'utf-8'
+>>> r.text
+u'{"type":"User"...'
+>>> r.json()
+{u'private_gists': 419, u'total_private_repos': 77, ...}
+
