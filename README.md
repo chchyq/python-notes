@@ -266,4 +266,71 @@ stderr标准错误
 u'{"type":"User"...'
 >>> r.json()
 {u'private_gists': 419, u'total_private_repos': 77, ...}
+re.json()//假设某个网页格式是json格式，可以利用request库中内质json解码器解码
+re.content()//假设内容是二进制 
+re.text//自动推测文本编码并进行解码
+re.encoding//修改文本编码，常用'utf-8'
 
+(3）网页数据解析
+
+BeautifulSoup是一个可以从HTML或XML文件中提取数据的Python库
+官方网站：https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+
+from bs4 import BeautifulSoup
+
+markup='<p class="titlt"><b>The Little Prince</b></p>'
+
+soup=Beautifulsoup(markup,"lxml")
+
+BeautigulSoup对象有四种：Tag（HTML或者XML文档中的标签像<b>）
+    NavigableString（Tag当中的字符串，就像The Little Prince）
+    BeautifulSoup（大部分都是，可以把它当作tag对象)
+    Comment（ NavigableString的一个子类）
+soup.b
+Out[5]: <b>The Little Prince</b>//任何b标签内容都可以通过BeautifulSoup.Tag形式访问得到
+type(soup.b)
+Out[6]: bs4.element.Tag//可以看一下他的类型，就是Tag
+tag=soup.p
+tag.name
+Out[8]: 'p'//Tag最重要属性name和Attribute，每个Tag通过name属性可以获得自己的名字
+ tag.attrs
+Out[9]: {'class': ['titlt']}//一个Tag可能包含多个属性，获取属性法一
+tag['class']
+Out[10]: ['titlt']//获取属性法二
+tag.string
+Out[11]: 'The Little Prince'//NavigableString对象用string属性来表示
+type(tag.string)
+Out[12]: bs4.element.NavigableString
+BeautifulSoup还有一个最常用方法
+soup.find_all('b')//可以寻找到所有b标签的内容，如果只需要找第一个标签内容，可以使用find（）方法
+Out[13]: [<b>The Little Prince</b>]
+
+import requests
+from bs4 import BeautifulSoup
+r=requests.get('https://book.douban.com/subject/26986954/')
+soup=BeautifulSoup(r.text,'lxml')
+pattern=soup.find_all('p','comment_content')
+for item in pattern:
+    print(item.string)
+
+
+re正则表达式模块进行各类正则表达式处理
+参考网站：https：//docs.python.org/3.5/library/re.html
+正则表达式：通常是用来检索替换符合某个规则或者是模块的文本，
+比如0到9表示取其中的一个数字，.表示除了换行符以外的任意字符，*表示重复0次或多次，加括号表示分组
+
+假设我们要寻找的是前面一个字符串加上后面的一个字符串中间的某一个字符串，就可以把它用（.*?)来表示
+import requests
+from bs4 import BeautifulSoup
+import re
+sum=0
+r=requests.get('https://book.douban.com/subject/26986954/')
+soup=BeautifulSoup(r.text,'lxml')
+pattern=soup.find_all('p','comment_content')
+for item in pattern:
+    print(item.string)
+pattern_s=re.compile('span class="user-stars allstar(.*?)rating"')
+p=re.findall(pattern_s,r.text)
+for star in p:
+    sum+=int(star)
+print(sum)
