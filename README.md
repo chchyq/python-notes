@@ -193,3 +193,49 @@ with open('file.txt') as f:
     for line in f:
         print(line,end='')
     
+三、数据获取
+
+
+1.本地数据获取
+
+
+（1)文件打开
+file_obj=open(filename,mode='r',buffering=-1...)//文件名，读写模式，是否要缓冲
+mode默认值为r（读文件），也有w（写文件，清空或者新建）和a（文件尾部追加），
+r+以读写模式打开，w+以读写模式打开（清空原内容），a+以读和追加模式打开
+后面加b表示二进制文件读写和追加 例如rb rb+
+buffering默认值为-1（0代表不缓冲，1或大于1的值表示缓冲一行或指定缓冲区大小）
+二进制文件可以不使用缓冲，文本文件一定要使用缓冲
+
+（2）写文件
+>>>f=open('firstpro.txt','w')
+>>>f.write('Hello,World!)
+>>>f.close()//不推荐用法，推荐下面这个
+>>>with open('firstpro.txt','w')as f:
+        f.write('Hello, World!')//推荐用法，可进行文件异常处理，更简洁有效
+        
+（3）读文件
+file_obj.read(size)//从文件中至多读出size字节数据，返回一个字符串
+file_obj.read()//读文件直到文件结束，返回一个字符串
+>>>with open('firstpro.txt','w')as f:
+        p1=f.read(5)
+        p2=f.read()
+>>>p1
+'Hello'
+>>>p2
+' World!'
+
+(4)其他读写函数
+file_obj.readlines()//读取多行数据，返回结果是一个列表，不删除换行符
+file_obj.readline()//读取一行数据
+file_obj.readlines()//写入多行数据，没有readline函数
+
+（5）其他文件相关函数
+file_obk.seek(offset,whence=0)//在文件中移动文件指针，从whence（0表示文件头部，1表示当前位置，2表示文件尾部）偏移offset个字节
+
+（6）标准文件
+stdin标准输入
+stdout标准输出
+stderr标准错误
+
+2.网络数据获取
