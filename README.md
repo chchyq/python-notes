@@ -389,6 +389,7 @@ zip()//由一系列可迭代的对象作为参数，返回一个zip对象，把�
 
 
 4.字符串
+(1)
 可以用单引号''、双引号""、三引号（可以换行)''''''表示字符串
 r""原始字符串，可以用来表示类似像文件路径等包含特殊富豪的字符串
 >>>s1="I'm a student"
@@ -401,3 +402,88 @@ world'''
 >>>s3=r'd:\Python\test.py'
 >>>s3
 'd:\Python\test.py'
+
+(2)输出形式
+format_string.format(arguments_to_convert)//format函数
+print（'There are {0:d}punctuation marks.'.format(count))//大括号是替换后面的参数的占位符，数字表示参数对应的序号，冒号后面是格式说明符
+
+类型说明符
+b 二进制，以2为基数输出数字
+o 八进制，以8为基数输出数字
+x 十六进制，以16为基数输出数字，9以上的数字用小写字母（类型符为X使用大写字母）表示
+c 字符，将整数转换成对应的unicode字符输出
+d 十进制整数，以10为基数输出数字
+f 浮点数，以浮点数输出数字
+e 指数记法，以科学记数法输出数字，用e（类型是E时用大写E）表示幂
+
+其他常用格式说明符
++m.nf 输出带符号（若正整数输出“++号）的数，保留n位小数，整个输出占m列（若实际宽度超过m则突破m的限制）
+<     左对齐，默认用空格填充右边
+0>5d  右对齐，用0填充左边，宽度为5
+^     居中对齐
+{{}}  输出一个{}
+
+>>>age,height = 21,1.758
+>>>print("Age:{0:5d},Height:{1:5.2f}".format(age,height))
+Age:21   ,Height: 1.76//21右边用3个空格符填充，1.76保留两位小数，一个空格填充加1.76则站五列。
+
+（3）字符串常用方法
+split（） replace（） join（）encode（） decode（）
+
+
+5.列表
+可扩展的容器对象
+包含不同类型对象
+(1)重要函数
+list.sort() //排序或者a=sorted(list)（sorted函数没有改变原本列表，只是生成列表副本）
+list.pop()//弹出最后一个值,如果加上参数，就是弹出参数代表的索引代表值
+list.append(x)//把x加入列表
+list1.extend(list2)//可以把两个列表合并
+
+（2)列表解析
+[expression for expr in sequence1
+            for expr2 in sequence2...
+            foe exprN in sequenceN
+            if condition]
+两种语法
+1、不带if条件，首先迭代sequence里面的所有内容，每一次迭代都把sequence里面的内容放到前面的对象里面去，然后再在表达式里面应用这样的一个对象，形成一个列表
+2、加入判断语句，只有满足条件的内容，才把sequence里面的相应内容放到这个对象里面去，再在表达式里面应用这样的一个对象，形成一个列表。
+例：
+>>>[x for x in range(10)]
+[0,1,2,3,4,5,6,7,8,9]
+>>>[x ** 2 for x in range(10)]
+[0,1,4,9,16,25,36,49,64,81]
+>>>[x ** 2 for x in range(10) if x ** 2<50]
+[0,1,4,9,16,25,36,49]
+>>>[(x+1,y+1) for x in range(2) for y in range (2)]
+[(1,1),(1,2),(2,1),(2,2)]
+
+6.元组（元素不可以改变）
+>>>2014
+2014//创建一个只有一个元素的元组是不存在的
+>>>2014,
+(2014,)//可以加一个逗号
+
+（1）元组的作用
+1、在映射类型中当作键使用
+
+2、函数的特殊类型参数
+    通过元组充当可变长的函数参数
+例：
+>>>def foo(args1,*argst):
+        print(args1)
+        print(argst)
+>>>foo('Hello,','Wangdachui','Niuyun','Linling')
+Hello,
+('Wangdachui','Niuyun','Linling')
+
+3、函数的特殊返回值
+返回对象个数  返回类型
+0            None
+1            object
+>1           tuple
+例：
+>>>def foo():
+        return 1,2,3
+>>>foo()
+(1,2,3)
