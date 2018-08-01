@@ -334,3 +334,55 @@ p=re.findall(pattern_s,r.text)
 for star in p:
     sum+=int(star)
 print(sum)
+
+4.序列
+aStr='Hello, World!'//字符串
+aList=[2,3,5,7,11]//列表
+aTuple=('Sunday','happy')//元组
+pList=[('AXP','American','78.52'),('BA','Japan','184.76'),('CVX','Cambodia','33.71)]//由元组构成的列表
+
+序列对象可以迭代，索引从0到N-1或者从-N到-1，一次可以访问一个或多个元素，也叫切片。
+
+（1）序列类型运算符
+x in s
+x not in s
+s+t
+s*n,n*s
+s[i]
+s[i:j]
+s[i:j:k]
+
+>>>week=['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+>>>print(week[1],'\n',week[-2],'\n',week[1:4],'\n',week[:6],'\n',week[::-1])
+Tue
+Sat
+['Tue','Wed','Thu']//索引从1开始，4-1=3个元素
+['Mon','Tue','Wed','Thu','Fri','Sat']//从头开始六个元素
+['Sun','Sat','Fri','Thu','Wed','Tue','Mon']//逆序
+>>>'apple'*3
+'appleappleapple'
+>>>'pine'+'apple'//+连接
+'pineapple'
+>>>'BA'in('BA','THe BOEIng Company','122.64')//in和not in可以用来判断某个对象是否包含在它其后的某个序列当中
+True
+
+(2)序列类型转换内建函数
+
+list（）//可以把一个字符串转成一个列表
+tuple（）//可以把一个字符串转成一个元组
+str（）//把一个列表或者元组转成字符串
+
+>>>list('Hello, World!')
+['H','e','l','l','o',',',' ','W','o','r','l','d','!']]
+>>>tuple('Hello, World!')
+('H','e','l','l','o',',',' ','W','o','r','l','d','!')
+
+(3)序列类型其他常用内建函数
+enumerate（）
+len（）
+max（）
+min（）
+reversed()
+sorted()
+sum()
+zip()
