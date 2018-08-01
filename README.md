@@ -335,7 +335,7 @@ for star in p:
     sum+=int(star)
 print(sum)
 
-4.序列
+3.序列
 aStr='Hello, World!'//字符串
 aList=[2,3,5,7,11]//列表
 aTuple=('Sunday','happy')//元组
@@ -386,3 +386,18 @@ reversed()//逆序
 sorted()//排序
 sum()//求和
 zip()//由一系列可迭代的对象作为参数，返回一个zip对象，把对象对应的元素打包成一个个元组
+
+
+4.字符串
+可以用单引号''、双引号""、三引号（可以换行)''''''表示字符串
+r""原始字符串，可以用来表示类似像文件路径等包含特殊富豪的字符串
+>>>s1="I'm a student"
+>>>s1
+I'm a student
+>>>s2='''hello
+world'''
+>>>s2
+'hello\nworld'//三引号可以让字符串保持原貌
+>>>s3=r'd:\Python\test.py'
+>>>s3
+'d:\Python\test.py'
