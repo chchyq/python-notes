@@ -1020,3 +1020,23 @@ ainfo.get()//返回指定键的值，不存在则返回默认值，None可以有
 >>>r.url
 
 >>>print(r.text)
+
+
+(5)可变长关键字参数//用**表示
+
+>>>def func(args1,*argst,**arged):
+
+        print(arge1)
+        
+        print(argst)
+        
+        print(argsd)
+        
+>>>func('Hello,','Wang','Niu','Ling',a1=1,a2=2,a3=3)
+
+Hello,
+
+('Wang','Niu','Ling')
+
+{'a1':1,'a2':2,'a3':3}
+
