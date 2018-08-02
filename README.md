@@ -1245,3 +1245,112 @@ linalg.elg()//求特征值和特征向量
 
 -大致可看成共享同一个index的series集合
 
+
+（1）生成dataframe
+
+import pandas as pd 
+
+name_data=[('Mayue',3000),('Lilin',4500),('Wuyun',8000)]
+
+name_table=pd.DataFrame(name_data)
+
+name_table.index=range(0,3)
+
+name_table.columns=['name','pay']
+
+print(name_table)
+
+
+    name   pay
+    
+0  Mayue  3000
+
+1  Lilin  4500
+
+2  Wuyun  8000
+
+（2）添加列（可直接赋值）
+
+>>>name_table['tax']=[0.05,0.05,0.1]
+
+>>>name_table
+
+Out[18]: 
+
+    name   pay   tax
+    
+0  Mayue  3000  0.05
+
+1  Lilin  4500  0.05
+
+2  Wuyun  8000  0.10
+
+（3）添加行（可用对象的标签loc和位置iloc索引，也可通过append（）方法或concat（）函数等进行处理）
+
+以loc为例：
+
+>>>name_table.loc[5]={'name':'Liuxi','pay':5000,'tax':0.05}
+
+>>>name_table
+
+Out[20]: 
+
+    name   pay   tax
+    
+0  Mayue  3000  0.05
+
+1  Lilin  4500  0.05
+
+2  Wuyun  8000  0.10
+
+5  Liuxi  5000  0.05
+
+(4)删除对象元素（可利用drop（）方法删除制定轴上的数据，drop（）返回一个新的对象，不会直接修改原始数据）
+
+例：删除行标签为5的行（name_table没有变）：
+
+>>>name_table.drop(5)
+
+Out[22]: 
+
+    name   pay   tax
+    
+0  Mayue  3000  0.05
+
+1  Lilin  4500  0.05
+
+2  Wuyun  8000  0.10
+
+删除tax列：
+
+>>>name_table.drop('tax',axis=1)//也可删除多行或多列数据'tax','pay'
+
+Out[23]: 
+
+    name   pay
+    
+0  Mayue  3000
+
+1  Lilin  4500
+
+2  Wuyun  8000
+
+5  Liuxi  5000
+
+(5)修改
+
+>>>name_table['tax']=0.03
+
+>>>name_table
+
+Out[25]: 
+    name   pay   tax
+    
+0  Mayue  3000  0.03
+
+1  Lilin  4500  0.03
+
+2  Wuyun  8000  0.03
+
+5  Liuxi  5000  0.03
+
