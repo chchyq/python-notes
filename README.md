@@ -360,13 +360,13 @@ with open('file.txt') as f:
 
 file_obj=open(filename,mode='r',buffering=-1...)//文件名，读写模式，是否要缓冲
 
-mode默认值为r（读文件），也有w（写文件，清空或者新建）和a（文件尾部追加），
+    mode默认值为r（读文件），也有w（写文件，清空或者新建）和a（文件尾部追加），
 
 r+以读写模式打开，w+以读写模式打开（清空原内容），a+以读和追加模式打开
 
 后面加b表示二进制文件读写和追加 例如rb rb+
 
-buffering默认值为-1（0代表不缓冲，1或大于1的值表示缓冲一行或指定缓冲区大小）
+    buffering默认值为-1（0代表不缓冲，1或大于1的值表示缓冲一行或指定缓冲区大小）
 
 二进制文件可以不使用缓冲，文本文件一定要使用缓冲
 
@@ -506,7 +506,9 @@ markup='<p class="titlt"><b>The Little Prince</b></p>'
 soup=Beautifulsoup(markup,"lxml")
 
 
-BeautigulSoup对象有四种：Tag（HTML或者XML文档中的标签像<b>）
+BeautigulSoup对象有四种：
+
+    Tag（HTML或者XML文档中的标签像<b>）
     
     NavigableString（Tag当中的字符串，就像The Little Prince）
     
