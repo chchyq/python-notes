@@ -149,14 +149,14 @@ iterable_object: string,list,tuple,dictionary,file
 
 -如果循环代码从break处终止，跳出循环
 
--正常结束循环，则质心else中代码
+-正常结束循环，则执行else中代码
 
 
 4.自定义函数
 
 def function_name([arguments]):
 
-    'optional documentation string'//DocString文档字符串函数注释，如果要查看函数DocString 则pring（funct.__doc__)
+    'optional documentation string' //DocString文档字符串函数注释，如果要查看函数DocString 则pring（funct.__doc__)
     
     function_suite
     
@@ -273,7 +273,7 @@ math.radians//将角度转弧度
 
 >>>import random
 
->>>random.choice(['c++','python','java'])//可以从序列或许随机值
+>>>random.choice(['c++','python','java'])//可以从序列获取随机值
 
 'java'
 
